@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: cloud-world-console-app
-          image: cloud-world-console-app:latest
+          image: azurelabsacr.azurecr.io/cloud-world-console-app:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

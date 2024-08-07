@@ -1,4 +1,5 @@
 using Azure.Messaging.ServiceBus;
+using CloudWorld.ServiceBus.Consumer.Features.Billing.ProcessBilling;
 using CloudWorld.ServiceBus.Consumer.Features.Orders.ProcessOrder;
 using Microsoft.Extensions.Azure;
 
@@ -12,7 +13,7 @@ public class Worker(ILogger<Worker> logger, IAzureClientFactory<ServiceBusClient
         while (!stoppingToken.IsCancellationRequested)
         {
             var client = azureClientBuilder.CreateClient("azure-labs-service-bus");
-            var consumer = client.CreateReceiver("orders", new ServiceBusReceiverOptions
+            var consumer = client.CreateReceiver("billing","background-job", new ServiceBusReceiverOptions
             {
                 ReceiveMode = ServiceBusReceiveMode.PeekLock
             });
@@ -22,7 +23,7 @@ public class Worker(ILogger<Worker> logger, IAzureClientFactory<ServiceBusClient
             if (message?.Body == null)
                 continue;
 
-            var content = message.Body.ToObjectFromJson<ProcessOrderRequest>();
+            var content = message.Body.ToObjectFromJson<ProcessBillingRequest>();
 
             logger.LogInformation("Received message: {message}", content);
             await consumer.CompleteMessageAsync(message, stoppingToken);
