@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.Kubernetes", "Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.ServiceBus.Producer", "CloudWorld.ServiceBus.Producer\CloudWorld.ServiceBus.Producer.csproj", "{AC068E80-9497-4100-BC5C-AB56204EA179}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.ServiceBus.Consumer", "CloudWorld.ServiceBus.Consumer\CloudWorld.ServiceBus.Consumer.csproj", "{23EEEF48-419E-468E-A82B-F647894AFA18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{AC068E80-9497-4100-BC5C-AB56204EA179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC068E80-9497-4100-BC5C-AB56204EA179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC068E80-9497-4100-BC5C-AB56204EA179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EEEF48-419E-468E-A82B-F647894AFA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EEEF48-419E-468E-A82B-F647894AFA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EEEF48-419E-468E-A82B-F647894AFA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EEEF48-419E-468E-A82B-F647894AFA18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
