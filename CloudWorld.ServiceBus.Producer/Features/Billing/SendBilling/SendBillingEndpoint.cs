@@ -7,9 +7,10 @@ public static class SendBillingEndpoint
 {
     public static IEndpointRouteBuilder MapSendBilling(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPost("/send",
-            ([FromServices] IMediator mediator, SendBillingRequest request) =>
-                mediator.Send(new SendBillingCommand(request)));
+        endpoints.MapPost("/send", async ([FromServices] IMediator mediator,
+                [FromBody] SendBillingRequest request,
+                CancellationToken cancellationToken = default) =>
+            await mediator.Send(new SendBillingCommand(request), cancellationToken));
 
         return endpoints;
     }

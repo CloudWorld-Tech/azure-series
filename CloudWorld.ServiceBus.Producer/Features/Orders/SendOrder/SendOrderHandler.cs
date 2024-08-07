@@ -11,14 +11,13 @@ public class SendOrderHandler(IAzureClientFactory<ServiceBusClient> azureClientF
     public async Task<SendOrderResponse> Handle(SendOrderCommand request, CancellationToken cancellationToken)
     {
         var serviceBusClient = azureClientFactory.CreateClient("azure-labs-service-bus");
-        var sender = serviceBusClient.CreateSender("cloud-world-q");
+        var sender = serviceBusClient.CreateSender("orders");
         var message = new ServiceBusMessage(JsonSerializer.Serialize(request.Request));
 
         await sender.SendMessageAsync(message, cancellationToken);
 
         return new SendOrderResponse
         {
-            MessageId = message.MessageId,
             Status = "Sent"
         };
     }

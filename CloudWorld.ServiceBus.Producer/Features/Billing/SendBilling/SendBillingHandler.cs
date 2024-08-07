@@ -11,14 +11,13 @@ public class SendBillingHandler(IAzureClientFactory<ServiceBusClient> azureClien
     public async Task<SendBillingResponse> Handle(SendBillingCommand request, CancellationToken cancellationToken)
     {
         var serviceBusClient = azureClientFactory.CreateClient("azure-labs-service-bus");
-        var sender = serviceBusClient.CreateSender("cloud-world-t");
+        var sender = serviceBusClient.CreateSender("billing");
         var message = new ServiceBusMessage(JsonSerializer.Serialize(request.Request));
 
         await sender.SendMessageAsync(message, cancellationToken);
 
         return new SendBillingResponse
         {
-            MessageId = message.MessageId,
             Status = "Sent"
         };
     }

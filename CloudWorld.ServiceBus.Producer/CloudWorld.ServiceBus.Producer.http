@@ -1,6 +1,0 @@
-@CloudWorld.ServiceBus.Producer_HostAddress = http://localhost:5036
-
-GET {{CloudWorld.ServiceBus.Producer_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

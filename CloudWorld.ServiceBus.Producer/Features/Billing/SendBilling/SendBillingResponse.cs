@@ -2,6 +2,7 @@
 
 public class SendBillingResponse
 {
-    public string MessageId { get; set; }
     public string Status { get; set; }
+    
+    public DateTime EnqueuedTime { get; set; } = DateTime.UtcNow;
 }
