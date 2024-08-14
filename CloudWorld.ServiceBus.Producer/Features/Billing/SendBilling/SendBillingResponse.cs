@@ -3,6 +3,6 @@
 public class SendBillingResponse
 {
     public string Status { get; set; }
-    
+
     public DateTime EnqueuedTime { get; set; } = DateTime.UtcNow;
 }

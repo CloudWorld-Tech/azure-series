@@ -1,0 +1,19 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: workload-identity-key-vault
+  namespace: azure-labs
+  labels:
+    azure.workload.identity/use: "true"
+spec:
+  serviceAccountName: azure-labs-sa
+  containers:
+    - image: ghcr.io/azure/azure-workload-identity/msal-go
+      name: oidc
+      env:
+        - name: KEYVAULT_URL
+          value: https://azure-labs-kv.vault.azure.net/
+        - name: SECRET_NAME
+          value: cloud-world
+  nodeSelector:
+    kubernetes.io/os: linux
