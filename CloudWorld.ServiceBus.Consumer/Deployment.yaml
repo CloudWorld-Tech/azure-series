@@ -1,0 +1,26 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-app
+  namespace: azure-labs
+  labels:
+    app: consumer-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer-app
+  template:
+    metadata:
+      name: consumer-app
+      labels:
+        app: consumer-app
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: azure-labs-sa
+      containers:
+        - name: consumer-app
+          image: azurelabsacr.azurecr.io/consumer-app:latest
+          imagePullPolicy: Always
+      restartPolicy: Always
+      

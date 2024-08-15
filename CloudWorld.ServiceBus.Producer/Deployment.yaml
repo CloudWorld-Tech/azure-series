@@ -1,0 +1,28 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-api
+  namespace: azure-labs
+  labels:
+    app: producer-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: producer-api
+  template:
+    metadata:
+      name: producer-api
+      labels:
+        app: producer-api
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: azure-labs-sa
+      containers:
+        - name: producer-api
+          image: azurelabsacr.azurecr.io/producer-api:latest
+          imagePullPolicy: Always
+          ports:
+              - containerPort: 8080
+                protocol: TCP
+      restartPolicy: Always
