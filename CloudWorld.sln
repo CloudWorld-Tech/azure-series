@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.ServiceBus.Produ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.ServiceBus.Consumer", "CloudWorld.ServiceBus.Consumer\CloudWorld.ServiceBus.Consumer.csproj", "{23EEEF48-419E-468E-A82B-F647894AFA18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld_Functions", "CloudWorld.Functions\CloudWorld_Functions.csproj", "{88D56EEB-F0D6-4254-8D1A-08A2AF85905B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{23EEEF48-419E-468E-A82B-F647894AFA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23EEEF48-419E-468E-A82B-F647894AFA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23EEEF48-419E-468E-A82B-F647894AFA18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D56EEB-F0D6-4254-8D1A-08A2AF85905B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D56EEB-F0D6-4254-8D1A-08A2AF85905B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D56EEB-F0D6-4254-8D1A-08A2AF85905B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D56EEB-F0D6-4254-8D1A-08A2AF85905B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
