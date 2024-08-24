@@ -8,7 +8,7 @@ namespace CloudWorld.Functions
     public class HttpFunction(ILogger<HttpFunction> logger)
     {
         [Function("HttpFunction")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous,
+        public IActionResult Run([HttpTrigger(AuthorizationLevel.Admin,
             "get", "post")] HttpRequest req)
         {
             logger.LogInformation("C# HTTP trigger function processed a request.");
