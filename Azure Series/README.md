@@ -6,3 +6,4 @@ This repository will allow you trackdown the Azure Series
 - Azure Service Bus Producer via API
 - Azure Services Bus Consumer with Background Services
 - YAML deployments for each to use managed identities
+- Azure Functions with HttpTriggers and ServiceBusTopicTrigger
