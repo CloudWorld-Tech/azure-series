@@ -7,7 +7,7 @@ on:
     branches: 
       [ master ]
     paths:
-    - './ContainerSeries/CloudWorld.Containers.Web/**'
+    - 'ContainerSeries/CloudWorld.Containers.Web/**'
     - '.github/workflows/az-labs-container-apps-AutoDeployTrigger-2fcfb411-87cb-47c7-b2e4-863422dfc861.yml'
 
   # Allow manual trigger 
