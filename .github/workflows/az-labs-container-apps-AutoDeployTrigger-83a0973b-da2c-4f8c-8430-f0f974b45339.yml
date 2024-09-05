@@ -34,7 +34,7 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
-          appSourcePath: ${{ github.workspace }}ContainerSeries/CloudWorld.Containers.Web 
+          appSourcePath: ${{ github.workspace }}/ContainerSeries/CloudWorld.Containers.Web 
           registryUrl: azurelabsacr.azurecr.io
           registryUsername: ${{ secrets.AZLABSCONTAINERAPPS_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.AZLABSCONTAINERAPPS_REGISTRY_PASSWORD }}
