@@ -4,19 +4,19 @@ name: Trigger auto deployment for az-labs-container-apps
 on:
   # Automatically trigger it when detected changes in repo
   push:
-    branches: 
+    branches:
       [ master ]
     paths:
-    - 'ContainerSeries/CloudWorld.Containers.Web/CloudWorld.Containers.Web/**'
-    - '.github/workflows/az-labs-container-apps-AutoDeployTrigger-934dfb8e-fa14-4c4a-9b38-d445162bdaf8.yml'
+      - 'ContainerSeries/CloudWorld.Containers.Web/**'
+      - '.github/workflows/az-labs-container-apps-AutoDeployTrigger-934dfb8e-fa14-4c4a-9b38-d445162bdaf8.yml'
 
   # Allow manual trigger 
-  workflow_dispatch:      
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: 
+    permissions:
       id-token: write #This is required for requesting the OIDC JWT Token
       contents: read #Required when GH token is used to authenticate with private repo
 
@@ -34,8 +34,7 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
-          dockerfilePath: ${{ github.workspace }}/ContainerSeries/CloudWorld.Containers.Web/CloudWorld.Containers.Web/Dockerfile
-          appSourcePath: ${{ github.workspace }}/ContainerSeries/CloudWorld.Containers.Web/
+          appSourcePath: ${{ github.workspace }}/ContainerSeries/CloudWorld.Containers.Web
           registryUrl: azurelabsacr.azurecr.io
           registryUsername: ${{ secrets.AZLABSCONTAINERAPPS_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.AZLABSCONTAINERAPPS_REGISTRY_PASSWORD }}
@@ -44,5 +43,4 @@ jobs:
           imageToBuild: azurelabsacr.azurecr.io/az-labs-container-apps:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
-
 
