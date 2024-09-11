@@ -1,6 +1,4 @@
-using Azure.Identity;
 using CloudWorld.Containers.Web.Components;
-using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 

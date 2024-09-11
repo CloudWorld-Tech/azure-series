@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.Containers.Web", "CloudWorld.Containers.Web\CloudWorld.Containers.Web.csproj", "{C1D22DBF-671A-436D-8BA5-77215E451917}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.Containers.EventHubs.Consumer", "CloudWorld.Containers.EventHubs.Consumer\CloudWorld.Containers.EventHubs.Consumer.csproj", "{DE051709-4685-4FCF-A65F-E12DBA435719}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C1D22DBF-671A-436D-8BA5-77215E451917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1D22DBF-671A-436D-8BA5-77215E451917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1D22DBF-671A-436D-8BA5-77215E451917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE051709-4685-4FCF-A65F-E12DBA435719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE051709-4685-4FCF-A65F-E12DBA435719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE051709-4685-4FCF-A65F-E12DBA435719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE051709-4685-4FCF-A65F-E12DBA435719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
