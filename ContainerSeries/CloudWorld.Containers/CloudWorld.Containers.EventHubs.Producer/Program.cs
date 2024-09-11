@@ -14,14 +14,13 @@ builder.Services.AddSwaggerGen();
 
 var eventHubConfiguration = builder.Configuration.GetSection("EventHubConfiguration").Get<EventHubConfiguration>();
 
-if(eventHubConfiguration == null)
-{
+if (eventHubConfiguration == null)
     throw new ArgumentNullException(nameof(eventHubConfiguration));
-}
 
 builder.Services.AddAzureClients(factoryBuilder =>
 {
-    factoryBuilder.AddEventHubProducerClientWithNamespace(eventHubConfiguration.NameSpace, eventHubConfiguration.EventHubName)
+    factoryBuilder
+        .AddEventHubProducerClientWithNamespace(eventHubConfiguration.NameSpace, eventHubConfiguration.EventHubName)
         .WithName("EventHubProducerClient")
         .WithCredential(new DefaultAzureCredential());
 });

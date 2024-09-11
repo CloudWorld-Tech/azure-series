@@ -8,10 +8,8 @@ builder.Services.AddHostedService<Worker>();
 
 var eventHubConfiguration = builder.Configuration.GetSection("EventHubConfiguration").Get<EventHubConfiguration>();
 
-if(eventHubConfiguration == null)
-{
+if (eventHubConfiguration == null)
     throw new ArgumentNullException(nameof(eventHubConfiguration));
-}
 
 builder.Services.AddAzureClients(factoryBuilder =>
 {
