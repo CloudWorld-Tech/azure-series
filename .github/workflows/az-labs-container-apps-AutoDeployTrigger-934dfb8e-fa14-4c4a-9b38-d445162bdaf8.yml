@@ -41,6 +41,7 @@ jobs:
           containerAppName: az-labs-container-apps
           resourceGroup: azure-labs
           imageToBuild: azurelabsacr.azurecr.io/az-labs-container-apps:${{ github.sha }}
+          dockerfile: ${{ github.workspace }}/ContainerSeries/CloudWorld.Containers/CloudWorld.Containers.Web/Dockerfile
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
