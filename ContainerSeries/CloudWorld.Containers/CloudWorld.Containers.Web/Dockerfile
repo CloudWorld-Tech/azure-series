@@ -7,7 +7,7 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["CloudWorld.Containers.Web/CloudWorld.Containers.Web.csproj", "CloudWorld.Containers.Web/"]
+COPY . "CloudWorld.Containers.Web"
 RUN dotnet restore "CloudWorld.Containers.Web/CloudWorld.Containers.Web.csproj"
 COPY . .
 WORKDIR "/src/CloudWorld.Containers.Web"
