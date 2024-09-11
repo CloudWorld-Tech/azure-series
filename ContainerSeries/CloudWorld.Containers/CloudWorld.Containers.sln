@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.Containers.Web",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.Containers.EventHubs.Consumer", "CloudWorld.Containers.EventHubs.Consumer\CloudWorld.Containers.EventHubs.Consumer.csproj", "{DE051709-4685-4FCF-A65F-E12DBA435719}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWorld.Containers.EventHubs.Producer", "CloudWorld.Containers.EventHubs.Producer\CloudWorld.Containers.EventHubs.Producer.csproj", "{E99D8773-C2DD-4DEC-B79D-2B2EB09D24C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DE051709-4685-4FCF-A65F-E12DBA435719}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE051709-4685-4FCF-A65F-E12DBA435719}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE051709-4685-4FCF-A65F-E12DBA435719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99D8773-C2DD-4DEC-B79D-2B2EB09D24C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99D8773-C2DD-4DEC-B79D-2B2EB09D24C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99D8773-C2DD-4DEC-B79D-2B2EB09D24C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99D8773-C2DD-4DEC-B79D-2B2EB09D24C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

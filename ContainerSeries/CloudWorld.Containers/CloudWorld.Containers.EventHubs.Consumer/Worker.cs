@@ -1,5 +1,4 @@
 using System.Text;
-using Azure.Messaging.EventHubs;
 using Azure.Messaging.EventHubs.Consumer;
 using Microsoft.Extensions.Azure;
 
@@ -19,10 +18,8 @@ public class Worker(ILogger<Worker> logger, IAzureClientFactory<EventHubConsumer
                                partitionId,
                                EventPosition.Latest,
                                stoppingToken))
-            {
                 logger.LogInformation("Event received on partition {partitionId}: {data}",
                     partitionEvent.Partition.PartitionId, Encoding.UTF8.GetString(partitionEvent.Data.Body.ToArray()));
-            }
 
             await Task.Delay(1000, stoppingToken);
         }

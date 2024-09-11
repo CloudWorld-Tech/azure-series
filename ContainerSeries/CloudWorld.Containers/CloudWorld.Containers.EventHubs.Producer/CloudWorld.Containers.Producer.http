@@ -1,0 +1,6 @@
+@CloudWorld.Containers.Producer_HostAddress = http://localhost:5187
+
+GET {{CloudWorld.Containers.Producer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
