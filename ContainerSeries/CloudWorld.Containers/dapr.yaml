@@ -1,0 +1,11 @@
+version: 1
+common:
+  resourcesPath: components
+apps:
+  - appID: cloud-world-consumer
+    appDirPath: CloudWorld.Containers.Dapr.Consumer
+    appPort: 5006
+    command: ["dotnet", "run"]
+  - appID: cloud-world-producer
+    appDirPath: CloudWorld.Containers.Dapr.Producer
+    command: ["dotnet", "run"]

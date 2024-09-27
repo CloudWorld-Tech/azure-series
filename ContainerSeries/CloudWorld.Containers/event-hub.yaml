@@ -1,0 +1,17 @@
+componentType: pubsub.azure.eventhubs
+version: v1
+ignoreErrors: false
+metadata:
+  - name: consumerID
+    value: messages
+  - name: storageAccountName
+    value: daprcwstgac
+  - name: storageContainerName
+    value: dapr
+  - name: eventHubNamespace
+    value: azure-labs-ns
+  - name: azureClientId
+    value: 00000000-0000-0000-0000-000000000000
+scopes:
+  - dapr-consumer
+  - dapr-producer

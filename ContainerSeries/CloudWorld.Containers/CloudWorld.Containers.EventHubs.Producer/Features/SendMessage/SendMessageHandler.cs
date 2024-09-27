@@ -13,7 +13,7 @@ public class SendMessageHandler(
     public async Task Handle(SendMessageCommand request, CancellationToken cancellationToken)
     {
         var eventHubProducerClient = azureClientFactory.CreateClient("EventHubProducerClient");
-        
+
         var eventBatch =
             await eventHubProducerClient.CreateBatchAsync(
                 new CreateBatchOptions { PartitionId = request.MessageRequest.PartitionId },

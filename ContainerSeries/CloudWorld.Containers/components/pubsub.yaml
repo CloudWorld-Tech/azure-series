@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.azure.eventhubs
+  version: v1
+  metadata:
+    - name: eventHubNamespace
+      value: "azure-labs-ns"
+    - name: storageAccountName
+      value: "daprcwstgac"
+    - name: storageContainerName
+      value: "dapr"
+    - name: consumerID
+      value: "messages"
