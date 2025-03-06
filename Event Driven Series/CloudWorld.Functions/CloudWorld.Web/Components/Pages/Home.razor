@@ -1,0 +1,140 @@
+﻿@page "/"
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:7071/api/", {
+                withCredentials: false
+            })
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        async function start() {
+            try {
+                await connection.start();
+                console.log("SignalR Connected.");
+            } catch (err) {
+                console.log(err);
+                setTimeout(start, 5000);
+            }
+        }
+
+        connection.onclose(async () => {
+            await start();
+        });
+
+        connection.on('imageProcessed', (data) => {
+            if (data && data.length > 0) {
+                const imageData = data[0];
+                document.getElementById('imageId').textContent = imageData.imageId || 'N/A';
+                document.getElementById('description').textContent = imageData.description ? imageData.description.join(', ') : 'N/A';
+
+                const tagsList = document.getElementById('tags');
+                tagsList.innerHTML = '';
+                if (imageData.tags) {
+                    imageData.tags.forEach(tag => {
+                        const li = document.createElement('li');
+                        li.className = 'list-group-item';
+                        li.textContent = tag;
+                        tagsList.appendChild(li);
+                    });
+                }
+
+                const objectsList = document.getElementById('objects');
+                objectsList.innerHTML = '';
+                if (imageData.objects) {
+                    imageData.objects.forEach(obj => {
+                        const li = document.createElement('li');
+                        li.className = 'list-group-item';
+                        li.textContent = obj;
+                        objectsList.appendChild(li);
+                    });
+                }
+            } else {
+                console.error('Invalid data structure received from SignalR');
+            }
+        });
+
+        // Start the connection.
+        start();
+
+        document.getElementById('upload').addEventListener('click', async () => {
+            
+            const fileInput = document.getElementById('file');
+            const file = fileInput.files[0];
+            if (file) {
+                const validTypes = ['image/jpeg', 'image/png'];
+                if (!validTypes.includes(file.type)) {
+                    console.error('Invalid file type. Only JPG and PNG are allowed.');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch('http://localhost:7071/api/UploadBlobFunction?container=attachments', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        const jsonResponse = await response.json();
+                        const imageUrl = jsonResponse.value;
+                        console.log(imageUrl); // Log the URL here
+                        const uploadedImage = document.getElementById('uploadedImage');
+                        uploadedImage.src = null;
+                        if (imageUrl) {
+                            try {
+                                uploadedImage.src = imageUrl;
+                                uploadedImage.style.display = 'block';
+                            } catch (e) {
+                                console.error('Invalid URL:', e);
+                                uploadedImage.style.display = 'none';
+                            }
+                        } else {
+                            uploadedImage.style.display = 'none';
+                        }
+                        console.log('File uploaded successfully');
+                    } else {
+                        console.error('File upload failed');
+                    }
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                }
+            } else {
+                console.error('No file selected');
+            }
+        });
+    });
+</script>
+
+<PageTitle>Home</PageTitle>
+
+<h1>Upload an image to do content analysis</h1>
+
+<input type="file" class="form-control mb-3" id="file" accept=".jpg, .jpeg, .png"/>
+<button class="btn btn-primary" id="upload">Upload</button>
+<img id="uploadedImage" class="img-fluid mt-3" alt="Uploaded Image" style="display: none;" src=""/>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h2 class="card-title">Image Details</h2>
+        <p class="card-text"><strong>Image ID:</strong> <span id="imageId"></span></p>
+        <p class="card-text"><strong>Description:</strong> <span id="description"></span></p>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h3 class="card-title">Tags</h3>
+        <ul id="tags" class="list-group list-group-flush"></ul>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h3 class="card-title">Objects</h3>
+        <ul id="objects" class="list-group list-group-flush"></ul>
+    </div>
+</div>
